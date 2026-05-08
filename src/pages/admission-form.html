@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داخلہ فارم</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 8mm;
+        }
+
+        body {
+            font-family: "Noto Nastaliq Urdu", serif;
+            direction: rtl;
+            background: #f0f0f0;
+            padding: 5px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .page {
+            width: 195mm;
+            min-height: 280mm;
+            margin: 0 auto;
+            background: white;
+            padding: 6mm;
+            box-shadow: 0 0 8px rgba(0,0,0,0.15);
+        }
+
+        /* ===== HEADER - EXACT MATCH ===== */
+        .header {
+            border: 2px solid #000;
+            display: flex;
+            align-items: stretch;
+            margin-bottom: 6px;
+        }
+
+        .photo-section {
+            width: 80px;
+            border-left: 2px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+        }
+
+        .photo-box {
+            width: 65px;
+            height: 85px;
+            border: 1.5px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+        }
+
+        .header-center {
+            flex: 1;
+            text-align: center;
+            padding: 8px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .header-subtitle {
+            font-size: 13px;
+            margin-top: 2px;
+        }
+
+        .logo-section {
+            width: 80px;
+            border-right: 2px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+        }
+
+        .logo-circle {
+            width: 65px;
+            height: 65px;
+            border: 2px solid #1a5f2a;
+            border-radius: 50%;
+            background: #1a5f2a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            position: relative;
+        }
+
+        .logo-since {
+            position: absolute;
+            top: 4px;
+            font-size: 6px;
+            color: #fff;
+        }
+
+        .logo-icon {
+            font-size: 9px;
+            margin-top: 6px;
+        }
+
+        .logo-text {
+            font-size: 8px;
+            text-align: center;
+            line-height: 1.1;
+            margin-top: 1px;
+        }
+
+        /* ===== MAIN TITLE ===== */
+        .main-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 8px 0 12px 0;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 2px;
+        }
+
+        /* ===== TOP INFO ROW ===== */
+        .top-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 10px;
+            padding: 0 3px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .info-label {
+            font-size: 12px; 
+            white-space: nowrap;
+        }
+
+        .info-line {
+            border-bottom: 1px solid #000;
+            min-width: 60px;
+            height: 16px;
+        }
+
+        .info-line.wide {
+            min-width: 80px;
+        }
+
+        .info-box {
+            border: 1px solid #000;
+            min-width: 60px;
+            height: 18px;
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .section {
+            margin-bottom: 8px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 2px 20px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .section-box {
+            border: 1px solid #000;
+            padding: 12px 10px 8px 10px;
+            margin-top: -10px;
+        }
+
+        /* ===== FORM ROWS ===== */
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 6px;
+            align-items: baseline;
+        }
+
+        .form-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .field {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .field-grow {
+            flex: 1;
+        }
+
+        .field-auto {
+            flex: 0 0 auto;
+        }
+
+        .field label {
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .field-input {
+            border: none;
+            border-bottom: 1px solid #000;
+            flex: 1;
+            height: 16px;
+            font-family: inherit;
+            font-size: 11px;
+            background: transparent;
+            min-width: 50px;
+        }
+
+        .field-input.short {
+            min-width: 35px;
+            max-width: 50px;
+        }
+
+        .field-input.medium {
+            min-width: 70px;
+        }
+
+        /* ===== CNIC BOXES ===== */
+        .cnic-row {
+            display: flex;
+            gap: 1px;
+            margin-right: 4px;
+        }
+
+        .cnic-box {
+            width: 15px;
+            height: 17px;
+            border: 1px solid #000;
+            text-align: center;
+            font-size: 10px;
+            line-height: 15px;
+        }
+
+        .cnic-dash {
+            width: 8px;
+            text-align: center;
+            line-height: 17px;
+            font-size: 11px;
+        }
+
+        /* ===== DIGIT BOXES ===== */
+        .digit-row {
+            display: flex;
+            gap: 1px;
+            margin-right: 4px;
+        }
+
+        .digit-box {
+            width: 14px;
+            height: 17px;
+            border: 1px solid #000;
+            text-align: center;
+            font-size: 10px;
+            line-height: 15px;
+        }
+
+        /* ===== CHECKBOX ===== */
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            border: 1px solid #000;
+            padding: 1px 6px;
+            font-size: 11px;
+        }
+
+        .checkbox-box {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #000;
+        }
+
+        /* ===== SIGNATURE SECTION ===== */
+        .signatures {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 12px;
+        }
+
+        .signature-item {
+            text-align: center;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid #000;
+            width: 90px;
+            height: 22px;
+            margin-bottom: 2px;
+        }
+
+        .signature-label {
+            font-size: 12px;
+        }
+
+        /* ===== PRINT BUTTON ===== */
+        .print-btn {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            padding: 6px 16px;
+            background: #1a5f2a;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            background: #144a20;
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .page {
+                box-shadow: none;
+                width: 100%;
+                max-width: none;
+                padding: 4mm;
+                margin: 0;
+            }
+
+            .print-btn {
+                display: none;
+            }
+
+            .field-input {
+                border-bottom: 1px solid #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">پرنٹ کریں</button>
+
+    <div class="page">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="photo-section">
+                <div class="photo-box">تصویر</div>
+            </div>
+            <div class="header-center">
+                <div class="header-title">جامعہ اسلامیہ دارالعلوم کراچی (پشاور)</div>
+                <div class="header-subtitle">تحت وفاق المدارس العربیہ پاکستان</div>
+            </div>
+            <div class="logo-section">
+                <div class="logo-circle">
+                    <div class="logo-since">Since 1991</div>
+                    <div class="logo-icon">﷽</div>
+                    <div class="logo-text">Darul Uloom<br>Swat</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN TITLE -->
+        <div class="main-title">داخلہ فارم (قدیم)</div>
+
+        <!-- TOP INFO ROW -->
+        <div class="top-info">
+            <div class="info-item">
+                <span class="info-label">تاریخ داخلہ:</span>
+                <div class="info-line wide"></div>
+            </div>
+            <div class="info-item">
+                <span class="info-label">مطلوبہ درجہ:</span>
+                <div class="info-line"></div>
+            </div>
+            <div class="info-item">
+                <span class="info-label">ٹوکن نمبر:</span>
+                <div class="info-box"></div>
+            </div>
+            <div class="info-item">
+                <span class="info-label">داخلہ امتحان میں حاصل کردہ نمبرات:</span>
+                <div class="info-box" style="min-width:40px;"></div>
+            </div>
+        </div>
+
+        <!-- SECTION 1: کوائف نامہ -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">کوائف نامہ</div>
+            </div>
+            <div class="section-box">
+                <div class="form-row">
+                    <div class="field field-grow">
+                        <label>نام:</label>
+                        <input type="text" class="field-input">
+                    </div>
+                    <div class="field field-grow">
+                        <label>ولدیت:</label>
+                        <input type="text" class="field-input">
+                    </div>
+                    <div class="field field-auto">
+                        <label>تاریخ پیدائش:</label>
+                        <input type="text" class="field-input medium">
+                    </div>
+                    <div class="field field-auto">
+                        <label>قومیت:</label>
+                        <input type="text" class="field-input short">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="field field-grow">
+                        <label>موجودہ پتہ:</label>
+                        <input type="text" class="field-input">
+                    </div>
+                    <div class="field field-grow">
+                        <label>مستقل پتہ:</label>
+                        <input type="text" class="field-input">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="field field-auto">
+                        <label>رابطہ نمبر:</label>
+                        <input type="text" class="field-input medium">
+                    </div>
+                    <div class="field" style="flex: 1; justify-content: flex-end;">
+                        <label>شناختی کارڈ نمبر:</label>
+                        <div class="cnic-row">
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-dash">-</div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-dash">-</div>
+                            <div class="cnic-box"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: سابقہ کارکردگی -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">سابقہ کارکردگی</div>
+            </div>
+            <div class="section-box">
+                <div class="form-row">
+                    <div class="field field-grow">
+                        <label>وفاق کا آخری پاس کردہ درجہ:</label>
+                        <input type="text" class="field-input">
+                    </div>
+                    <div class="field field-auto">
+                        <label>حاصل کردہ نمبرات:</label>
+                        <input type="text" class="field-input short">
+                    </div>
+                    <div class="field field-auto">
+                        <label>تقدیر:</label>
+                        <input type="text" class="field-input short">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="field field-grow">
+                        <label>نام مدرسہ / جامعہ:</label>
+                        <input type="text" class="field-input">
+                    </div>
+                    <div class="field field-grow">
+                        <label>عمومی مکمل پتہ:</label>
+                        <input type="text" class="field-input">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="field field-auto">
+                        <label>وفاق رقم الجلوس:</label>
+                        <input type="text" class="field-input medium">
+                    </div>
+                    <div class="field field-auto">
+                        <label>سال:</label>
+                        <div class="info-box" style="min-width:40px;height:16px;"></div>
+                    </div>
+                    <div class="field" style="flex: 1; justify-content: flex-end;">
+                        <label>رقم التحصیل:</label>
+                        <div class="digit-row">
+                            <div class="digit-box"></div>
+                            <div class="digit-box"></div>
+                            <div class="digit-box"></div>
+                            <div class="digit-box"></div>
+                            <div class="digit-box"></div>
+                            <div class="digit-box"></div>
+                            <div class="digit-box"></div>
+                            <div class="digit-box"></div>
+                            <div class="digit-box"></div>
+                            <div class="digit-box"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row" style="margin-top: 4px;">
+                    <div class="field field-auto" style="align-items: center;">
+                        <label>اضافی تعلیم:</label>
+                        <div class="checkbox-row" style="margin-right: 6px;">
+                            <div class="checkbox-item">
+                                <div class="checkbox-box"></div>
+                                <span>خواتین قرآن</span>
+                            </div>
+                            <div class="checkbox-item">
+                                <div class="checkbox-box"></div>
+                                <span>نگہبان قرآن</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field field-auto">
+                        <label>عمری تعلیم:</label>
+                        <input type="text" class="field-input short">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: کفالت نامہ برائے سرپرست -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">کفالت نامہ برائے سرپرست</div>
+            </div>
+            <div class="section-box">
+                <div class="form-row">
+                    <div class="field field-grow">
+                        <label>نام:</label>
+                        <input type="text" class="field-input">
+                    </div>
+                    <div class="field field-grow">
+                        <label>ولدیت:</label>
+                        <input type="text" class="field-input">
+                    </div>
+                    <div class="field field-auto">
+                        <label>رابطہ نمبر 1:</label>
+                        <input type="text" class="field-input medium">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="field field-auto">
+                        <label>رابطہ نمبر 2:</label>
+                        <input type="text" class="field-input medium">
+                    </div>
+                    <div class="field field-grow">
+                        <label>موجودہ پتہ:</label>
+                        <input type="text" class="field-input">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="field" style="flex: 1.5;">
+                        <label>شناختی کارڈ:</label>
+                        <div class="cnic-row">
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-dash">-</div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-box"></div>
+                            <div class="cnic-dash">-</div>
+                            <div class="cnic-box"></div>
+                        </div>
+                    </div>
+                    <div class="field field-auto">
+                        <label>پیشہ:</label>
+                        <input type="text" class="field-input medium">
+                    </div>
+                    <div class="field field-auto">
+                        <label>سرپرست سے رشتہ:</label>
+                        <input type="text" class="field-input short">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: دفتری کاروائی -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-title">دفتری کاروائی</div>
+            </div>
+            <div class="section-box">
+                <div class="signatures">
+                    <div class="signature-item">
+                        <div class="signature-line"></div>
+                        <div class="signature-label">دستخط ناظم</div>
+                    </div>
+                    <div class="signature-item">
+                        <div class="signature-line"></div>
+                        <div class="signature-label">دستخط مہتمم</div>
+                    </div>
+                    <div class="signature-item">
+                        <div class="signature-line"></div>
+                        <div class="signature-label">مہر جامعہ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

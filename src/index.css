@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Madrasa Admin Dashboard Design System
+   Primary Orange: #f16700 - buttons, active states, accents
+   Dark Teal: #073F3A - sidebar background, text
+   Secondary Green: #33675C - secondary buttons, hover states
+   White: #FFFFFF - cards, backgrounds
+*/
+
+@layer base {
+  :root {
+    /* Light theme - Professional Madrasa Style */
+    --background: 150 10% 96%;
+    --foreground: 168 83% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 168 83% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 168 83% 13%;
+
+    /* Primary Orange #f16700 */
+    --primary: 24 100% 47%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary Green #33675C */
+    --secondary: 164 35% 30%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 150 10% 92%;
+    --muted-foreground: 168 30% 40%;
+
+    --accent: 164 35% 30%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 168 20% 85%;
+    --input: 168 20% 85%;
+    --ring: 24 100% 47%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar - Dark Teal #073F3A */
+    --sidebar-background: 168 83% 13%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 24 100% 47%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 164 35% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 168 60% 20%;
+    --sidebar-ring: 24 100% 47%;
+
+    /* Custom tokens */
+    --success: 145 63% 42%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 168 83% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 168 60% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 168 60% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 24 100% 47%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 164 35% 35%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 168 40% 20%;
+    --muted-foreground: 168 20% 70%;
+
+    --accent: 164 35% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 168 40% 25%;
+    --input: 168 40% 25%;
+    --ring: 24 100% 47%;
+
+    --sidebar-background: 168 83% 8%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 24 100% 47%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 164 35% 20%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 168 40% 15%;
+    --sidebar-ring: 24 100% 47%;
+
+    --success: 145 63% 35%;
+    --success-foreground: 0 0% 100%;
+    --warning: 45 93% 40%;
+    --warning-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    direction: rtl;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Ensure proper RTL for form inputs */
+  input, textarea, select {
+    text-align: right;
+  }
+}
+
+@layer utilities {
+  .font-urdu {
+    font-family: 'Noto Nastaliq Urdu', serif;
+  }
+}
