@@ -37,19 +37,24 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<DashboardStatsResponse | null>(null);
 
+  const fetchData = async () => {
+    try {
+      const res = await statsAPI.getDashboard();
+      setData(res.data.data as DashboardStatsResponse);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     let alive = true;
-    (async () => {
-      try {
-        const res = await statsAPI.getDashboard();
-        if (!alive) return;
-        setData(res.data.data as DashboardStatsResponse);
-      } finally {
-        if (alive) setLoading(false);
-      }
-    })();
+    fetchData();
+    const interval = setInterval(() => {
+      if (alive) fetchData();
+    }, 5000); // Refresh every 5 seconds
     return () => {
       alive = false;
+      clearInterval(interval);
     };
   }, []);
 

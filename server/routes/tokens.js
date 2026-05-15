@@ -15,8 +15,8 @@ const canManageOwnToken = (token, userId) => {
 
 // @route   POST /api/tokens
 // @desc    Create new token (Counter 1)
-// @access  Private (counter1)
-router.post('/', protect, authorize('counter1'), upload.single('photo'), async (req, res) => {
+// @access  Private (counter1, admin)
+router.post('/', protect, authorize('counter1', 'admin'), upload.single('photo'), async (req, res) => {
     try {
         // Fetch class dates if class is provided
         let classDates = {};
@@ -129,8 +129,8 @@ router.get('/my', protect, authorize('counter1'), async (req, res) => {
 
 // @route   GET /api/tokens/cnic/:cnic
 // @desc    Get student/token by CNIC for auto-fill
-// @access  Private (counter1)
-router.get('/cnic/:cnic', protect, authorize('counter1'), async (req, res) => {
+// @access  Private (counter1, admin)
+router.get('/cnic/:cnic', protect, authorize('counter1', 'admin'), async (req, res) => {
     try {
         const { cnic } = req.params;
         const cleanCnic = cnic.replace(/-/g, ''); // Remove dashes for comparison
@@ -278,8 +278,8 @@ router.delete('/my/:id', protect, authorize('counter1'), async (req, res) => {
 
 // @route   POST /api/tokens/my/:id/regenerate-token
 // @desc    Regenerate token number (Counter 1)
-// @access  Private (counter1)
-router.post('/my/:id/regenerate-token', protect, authorize('counter1'), async (req, res) => {
+// @access  Private (counter1, admin)
+router.post('/my/:id/regenerate-token', protect, authorize('counter1', 'admin'), async (req, res) => {
     try {
         const token = await Token.findById(req.params.id);
         if (!token) {

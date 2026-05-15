@@ -214,6 +214,12 @@ export const settingsAPI = {
     get: () => api.get('/settings'),
 
     update: (data: any) => api.put('/settings', data),
+
+    backup: () => api.post('/settings/backup', {}, { responseType: 'blob' }),
+
+    restore: (data: any) => api.post('/settings/restore', data),
+
+    deleteAll: () => api.delete('/settings/delete-all'),
 };
 
 export default api;
