@@ -98,10 +98,12 @@ const corsOptions = {
     // Allow requests with no origin (mobile apps, curl, etc.)
     if (!origin) return callback(null, true);
 
-    // Allow production domain
+    // Allow production domains
     if (
       origin === "https://darululoom.healthspire.org" ||
-      origin === "http://darululoom.healthspire.org"
+      origin === "http://darululoom.healthspire.org" ||
+      origin === "https://darulalum.healthspire.org" ||
+      origin === "http://darulalum.healthspire.org"
     ) {
       return callback(null, true);
     }
