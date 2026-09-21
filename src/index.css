@@ -4,6 +4,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Urdu font - AlQalam Taj Nastaleeq (bundled fallback for machines without it installed) */
+@font-face {
+  font-family: 'AlQalam Taj Nastaleeq';
+  src: local('AlQalam Taj Nastaleeq'), local('AlQalamTajNastaleeq'),
+    url('/fonts/AlQalamTajNastaleeq.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* Latin font - Alexandria (scoped to Latin so Urdu/Arabic always uses AlQalam) */
+@font-face {
+  font-family: 'Alexandria';
+  src: local('Alexandria'), local('Alexandria Regular'),
+    url('/fonts/Alexandria-Regular.ttf') format('truetype');
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0100-024F, U+1E00-1EFF, U+2000-206F, U+20A0-20BF, U+2100-214F;
+}
+
 /* Madrasa Admin Dashboard Design System
    Primary Orange: #f16700 - buttons, active states, accents
    Dark Teal: #073F3A - sidebar background, text
@@ -119,7 +136,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Alexandria', 'AlQalam Taj Nastaleeq', 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
   /* Ensure proper RTL for form inputs */
@@ -130,6 +147,6 @@
 
 @layer utilities {
   .font-urdu {
-    font-family: 'Noto Nastaliq Urdu', serif;
+    font-family: 'AlQalam Taj Nastaleeq', 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
   }
 }

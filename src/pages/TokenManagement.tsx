@@ -209,7 +209,8 @@ export default function TokenManagement() {
         <style>
           @font-face {
             font-family: 'AlQalam Taj Nastaleeq';
-            src: local('AlQalam Taj Nastaleeq'), local('AlQalamTajNastaleeq');
+            src: local('AlQalam Taj Nastaleeq'), local('AlQalamTajNastaleeq'),
+              url('/fonts/AlQalamTajNastaleeq.ttf') format('truetype');
           }
           @media print {
             @page { 

@@ -110,7 +110,7 @@ export default function PublicSlip() {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', background: '#f0f2f5' }}>
-            <div style={{ width: '320px', background: 'white', color: 'black', borderRadius: '8px', border: '1px solid #ccc', fontFamily: '"Noto Nastaliq Urdu", serif', direction: 'rtl' }}>
+            <div style={{ width: '320px', background: 'white', color: 'black', borderRadius: '8px', border: '1px solid #ccc', fontFamily: "'AlQalam Taj Nastaleeq', 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif", direction: 'rtl' }}>
                 <div style={{ padding: '20px', textAlign: 'center' }}>
                     {/* Header */}
                     <div style={{ borderBottom: '2px solid black', paddingBottom: '12px' }}>

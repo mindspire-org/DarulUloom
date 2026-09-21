@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        urdu: ["'Noto Nastaliq Urdu'", "serif"],
+        urdu: ["'AlQalam Taj Nastaleeq'", "'Jameel Noori Nastaleeq'", "'Noto Nastaliq Urdu'", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",

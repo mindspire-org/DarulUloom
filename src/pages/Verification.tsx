@@ -2106,7 +2106,7 @@ export default function Verification() {
 
       <style>{`
         .admission-form-container {
-          font-family: "Noto Nastaliq Urdu", serif;
+          font-family: 'AlQalam Taj Nastaleeq', 'Jameel Noori Nastaleeq', "Noto Nastaliq Urdu", serif;
           direction: rtl;
           background: #f5f5f5;
           padding: 20px;
